@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BXH các quốc gia</title>
+  <title>BXH Các quốc gia</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -34,7 +34,7 @@
   </style>
 </head>
 <body>
-  <h1>BXH các quốc gia</h1>
+  <h1>BXH Các quốc gia</h1>
   <ul id="country-list"></ul>
 
   <script>
@@ -76,7 +76,7 @@
       const list = document.getElementById("country-list");
       countries.forEach(({ code, name }) => {
         const li = document.createElement("li");
-        li.textContent = `${countryCodeToEmoji(code)} ${name}`;
+        li.textContent = `${countryCodeToEmoji(code)} ${code} - ${name}`;
         list.appendChild(li);
       });
     });
