@@ -35,32 +35,49 @@
 </head>
 <body>
   <h1>Bảng xếp hạng quốc gia</h1>
-  <ul>
-    <li>🇺🇦 Ukraine</li>
-    <li>🇨🇭 Thụy Sĩ</li>
-    <li>🇧🇪 Bỉ</li>
-    <li>🇰🇪 Cộng hòa Kenya</li>
-    <li>🇪🇬 Ai Cập</li>
-    <li>🇸🇪 Thụy Điển</li>
-    <li>🇸🇴 Somalia</li>
-    <li>🇧🇷 Brazil</li>
-    <li>🇮🇶 Iraq</li>
-    <li>🇦🇿 Azerbaijan</li>
-    <li>🇬🇧 Anh</li>
-    <li>🇹🇼 Đài Loan</li>
-    <li>🇩🇪 Đức</li>
-    <li>🇯🇵 Nhật</li>
-    <li>🇦🇪 Dubai</li>
-    <li>🇮🇩 Indo</li>
-    <li>🇷🇴 Romani</li>
-    <li>🇪🇸 Tây Ban Nha</li>
-    <li>🇹🇭 Thái</li>
-    <li>🇹🇷 Thổ</li>
-    <li>🇮🇹 Itali</li>
-    <li>🇫🇷 Pháp</li>
-    <li>🇲🇾 Malaysia</li>
-    <li>🇦🇺 Úc</li>
-    <li>🇵🇭 Philippin</li>
-  </ul>
+  <ul id="country-list"></ul>
+
+  <script>
+    const countries = [
+      { code: "UA", name: "Ukraine" },
+      { code: "CH", name: "Thụy Sĩ" },
+      { code: "BE", name: "Bỉ" },
+      { code: "KE", name: "Cộng hòa Kenya" },
+      { code: "EG", name: "Ai Cập" },
+      { code: "SE", name: "Thụy Điển" },
+      { code: "SO", name: "Somalia" },
+      { code: "BR", name: "Brazil" },
+      { code: "IQ", name: "Iraq" },
+      { code: "AZ", name: "Azerbaijan" },
+      { code: "GB", name: "Anh" },
+      { code: "TW", name: "Đài Loan" },
+      { code: "DE", name: "Đức" },
+      { code: "JP", name: "Nhật" },
+      { code: "AE", name: "Dubai" },
+      { code: "ID", name: "Indo" },
+      { code: "RO", name: "Romani" },
+      { code: "ES", name: "Tây Ban Nha" },
+      { code: "TH", name: "Thái" },
+      { code: "TR", name: "Thổ" },
+      { code: "IT", name: "Itali" },
+      { code: "FR", name: "Pháp" },
+      { code: "MY", name: "Malaysia" },
+      { code: "AU", name: "Úc" },
+      { code: "PH", name: "Philippin" }
+    ];
+
+    function countryCodeToEmoji(code) {
+      return code.toUpperCase().replace(/./g, char =>
+        String.fromCodePoint(127397 + char.charCodeAt())
+      );
+    }
+
+    const list = document.getElementById("country-list");
+    countries.forEach(({ code, name }) => {
+      const li = document.createElement("li");
+      li.textContent = `${countryCodeToEmoji(code)} ${name}`;
+      list.appendChild(li);
+    });
+  </script>
 </body>
 </html>
