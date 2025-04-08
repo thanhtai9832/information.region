@@ -44,7 +44,6 @@
     <thead>
       <tr>
         <th>Quốc gia</th>
-        <th>Hằng ngày / Giờ / Tuần</th>
         <th>Thịnh hành</th>
         <th>Chơi game</th>
       </tr>
@@ -96,8 +95,7 @@
       const flagEmoji = countryCodeToEmoji(code);
       const playGame = gameCountries.includes(code) ? "✅" : "";
       tr.innerHTML = `
-        <td class="flag"><span>${flagEmoji}</span>${name}</td>
-        <td>✅</td>
+        <td class="flag"><span>${flagEmoji}</span>${name} (Hằng ngày)</td>
         <td>✅</td>
         <td>${playGame}</td>
       `;
