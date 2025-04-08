@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BXH Các quốc gia</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BXH Quốc gia</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,73 +12,94 @@
     }
     h1 {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 400px;
+    table {
+      width: 90%;
       margin: auto;
-    }
-    li {
-      padding: 0.5rem 1rem;
+      border-collapse: collapse;
       background: #fff;
-      margin-bottom: 0.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    td.flag {
+      font-size: 1.2rem;
+      text-align: left;
+    }
+    td.flag span {
+      margin-right: 0.5rem;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
   <h1>BXH Các quốc gia</h1>
-  <ul id="country-list"></ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Quốc gia</th>
+        <th>Hằng ngày / Giờ / Tuần</th>
+        <th>Thịnh hành</th>
+        <th>Chơi game</th>
+      </tr>
+    </thead>
+    <tbody id="country-table-body"></tbody>
+  </table>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const countries = [
-        { code: "UA", name: "Ukraine" },
-        { code: "CH", name: "Thụy Sĩ" },
-        { code: "BE", name: "Bỉ" },
-        { code: "KE", name: "Cộng hòa Kenya" },
-        { code: "EG", name: "Ai Cập" },
-        { code: "SE", name: "Thụy Điển" },
-        { code: "SO", name: "Somalia" },
-        { code: "BR", name: "Brazil" },
-        { code: "IQ", name: "Iraq" },
-        { code: "AZ", name: "Azerbaijan" },
-        { code: "GB", name: "Anh" },
-        { code: "TW", name: "Đài Loan" },
-        { code: "DE", name: "Đức" },
-        { code: "JP", name: "Nhật" },
-        { code: "AE", name: "Dubai" },
-        { code: "ID", name: "Indo" },
-        { code: "RO", name: "Romani" },
-        { code: "ES", name: "Tây Ban Nha" },
-        { code: "TH", name: "Thái" },
-        { code: "TR", name: "Thổ" },
-        { code: "IT", name: "Itali" },
-        { code: "FR", name: "Pháp" },
-        { code: "MY", name: "Malaysia" },
-        { code: "AU", name: "Úc" },
-        { code: "PH", name: "Philippin" }
-      ];
+    const countries = [
+      { code: "UA", name: "Ukraine" },
+      { code: "CH", name: "Thụy Sĩ" },
+      { code: "BE", name: "Bỉ" },
+      { code: "KE", name: "Cộng hòa Kenya" },
+      { code: "EG", name: "Ai Cập" },
+      { code: "SE", name: "Thụy Điển" },
+      { code: "SO", name: "Somalia" },
+      { code: "BR", name: "Brazil" },
+      { code: "IQ", name: "Iraq" },
+      { code: "AZ", name: "Azerbaijan" },
+      { code: "GB", name: "Anh" },
+      { code: "TW", name: "Đài Loan" },
+      { code: "DE", name: "Đức" },
+      { code: "JP", name: "Nhật" },
+      { code: "AE", name: "Dubai" },
+      { code: "ID", name: "Indo" },
+      { code: "RO", name: "Romani" },
+      { code: "ES", name: "Tây Ban Nha" },
+      { code: "TH", name: "Thái" },
+      { code: "TR", name: "Thổ" },
+      { code: "IT", name: "Itali" },
+      { code: "FR", name: "Pháp" },
+      { code: "MY", name: "Malaysia" },
+      { code: "AU", name: "Úc" },
+      { code: "PH", name: "Philippin" }
+    ];
 
-      function countryCodeToEmoji(code) {
-        return code.toUpperCase().replace(/./g, char =>
-          String.fromCodePoint(127397 + char.charCodeAt())
-        );
-      }
+    function countryCodeToEmoji(code) {
+      return code.toUpperCase().replace(/./g, char =>
+        String.fromCodePoint(127397 + char.charCodeAt())
+      );
+    }
 
-      const list = document.getElementById("country-list");
-      countries.forEach(({ code, name }) => {
-        const li = document.createElement("li");
-        li.textContent = `${countryCodeToEmoji(code)} ${code} - ${name}`;
-        list.appendChild(li);
-      });
+    const tbody = document.getElementById("country-table-body");
+    countries.forEach(({ code, name }) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td class="flag"><span>${countryCodeToEmoji(code)}</span>${name}</td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+        <td><input type="checkbox"></td>
+      `;
+      tbody.appendChild(tr);
     });
   </script>
 </body>
