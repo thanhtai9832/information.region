@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bảng xếp hạng quốc gia</title>
+  <title>BXH các quốc gia</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,45 +38,47 @@
   <ul id="country-list"></ul>
 
   <script>
-    const countries = [
-      { code: "UA", name: "Ukraine" },
-      { code: "CH", name: "Thụy Sĩ" },
-      { code: "BE", name: "Bỉ" },
-      { code: "KE", name: "Cộng hòa Kenya" },
-      { code: "EG", name: "Ai Cập" },
-      { code: "SE", name: "Thụy Điển" },
-      { code: "SO", name: "Somalia" },
-      { code: "BR", name: "Brazil" },
-      { code: "IQ", name: "Iraq" },
-      { code: "AZ", name: "Azerbaijan" },
-      { code: "GB", name: "Anh" },
-      { code: "TW", name: "Đài Loan" },
-      { code: "DE", name: "Đức" },
-      { code: "JP", name: "Nhật" },
-      { code: "AE", name: "Dubai" },
-      { code: "ID", name: "Indo" },
-      { code: "RO", name: "Romani" },
-      { code: "ES", name: "Tây Ban Nha" },
-      { code: "TH", name: "Thái" },
-      { code: "TR", name: "Thổ" },
-      { code: "IT", name: "Itali" },
-      { code: "FR", name: "Pháp" },
-      { code: "MY", name: "Malaysia" },
-      { code: "AU", name: "Úc" },
-      { code: "PH", name: "Philippin" }
-    ];
+    document.addEventListener("DOMContentLoaded", function () {
+      const countries = [
+        { code: "UA", name: "Ukraine" },
+        { code: "CH", name: "Thụy Sĩ" },
+        { code: "BE", name: "Bỉ" },
+        { code: "KE", name: "Cộng hòa Kenya" },
+        { code: "EG", name: "Ai Cập" },
+        { code: "SE", name: "Thụy Điển" },
+        { code: "SO", name: "Somalia" },
+        { code: "BR", name: "Brazil" },
+        { code: "IQ", name: "Iraq" },
+        { code: "AZ", name: "Azerbaijan" },
+        { code: "GB", name: "Anh" },
+        { code: "TW", name: "Đài Loan" },
+        { code: "DE", name: "Đức" },
+        { code: "JP", name: "Nhật" },
+        { code: "AE", name: "Dubai" },
+        { code: "ID", name: "Indo" },
+        { code: "RO", name: "Romani" },
+        { code: "ES", name: "Tây Ban Nha" },
+        { code: "TH", name: "Thái" },
+        { code: "TR", name: "Thổ" },
+        { code: "IT", name: "Itali" },
+        { code: "FR", name: "Pháp" },
+        { code: "MY", name: "Malaysia" },
+        { code: "AU", name: "Úc" },
+        { code: "PH", name: "Philippin" }
+      ];
 
-    function countryCodeToEmoji(code) {
-      return code.toUpperCase().replace(/./g, char =>
-        String.fromCodePoint(127397 + char.charCodeAt())
-      );
-    }
+      function countryCodeToEmoji(code) {
+        return code.toUpperCase().replace(/./g, char =>
+          String.fromCodePoint(127397 + char.charCodeAt())
+        );
+      }
 
-    const list = document.getElementById("country-list");
-    countries.forEach(({ code, name }) => {
-      const li = document.createElement("li");
-      li.textContent = `${countryCodeToEmoji(code)} ${name}`;
-      list.appendChild(li);
+      const list = document.getElementById("country-list");
+      countries.forEach(({ code, name }) => {
+        const li = document.createElement("li");
+        li.textContent = `${countryCodeToEmoji(code)} ${name}`;
+        list.appendChild(li);
+      });
     });
   </script>
 </body>
