@@ -36,9 +36,6 @@
     td.flag span {
       margin-right: 0.5rem;
     }
-    input[type="checkbox"] {
-      transform: scale(1.2);
-    }
   </style>
 </head>
 <body>
@@ -81,8 +78,11 @@
       { code: "FR", name: "Pháp" },
       { code: "MY", name: "Malaysia" },
       { code: "AU", name: "Úc" },
-      { code: "PH", name: "Philippin" }
+      { code: "PH", name: "Philippin" },
+      { code: "KZ", name: "Kazakhstan" }
     ];
+
+    const gameCountries = ["MY", "PH", "AZ", "ID", "IQ", "IT", "KZ"];
 
     function countryCodeToEmoji(code) {
       return code.toUpperCase().replace(/./g, char =>
@@ -93,11 +93,13 @@
     const tbody = document.getElementById("country-table-body");
     countries.forEach(({ code, name }) => {
       const tr = document.createElement("tr");
+      const flagEmoji = countryCodeToEmoji(code);
+      const playGame = gameCountries.includes(code) ? "✅" : "";
       tr.innerHTML = `
-        <td class="flag"><span>${countryCodeToEmoji(code)}</span>${name}</td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox"></td>
+        <td class="flag"><span>${flagEmoji}</span>${name}</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>${playGame}</td>
       `;
       tbody.appendChild(tr);
     });
