@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BXH Quốc gia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 90%;
+      margin: auto;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: center;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    td.flag {
+      font-size: 1.2rem;
+      text-align: left;
+    }
+    td.flag span {
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>BXH Các quốc gia</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Quốc gia</th>
+        <th>Đã chọn</th>
+        <th>Thịnh hành</th>
+        <th>Chơi game</th>
+      </tr>
+    </thead>
+    <tbody id="country-table-body"></tbody>
+  </table>
+
+  <script>
+    const countries = [
+      { code: "UA", name: "Ukraine", period: "Hằng ngày" },
+      { code: "CH", name: "Thụy Sĩ", period: "Hằng ngày" },
+      { code: "BE", name: "Bỉ", period: "Hằng ngày" },
+      { code: "KE", name: "Cộng hòa Kenya", period: "Hằng ngày" },
+      { code: "SE", name: "Thụy Điển", period: "Hằng ngày" },
+      { code: "BR", name: "Brazil", period: "Hằng ngày" },
+      { code: "AZ", name: "Azerbaijan", period: "Hằng ngày" },
+      { code: "GB", name: "Anh", period: "Hằng ngày" },
+      { code: "TW", name: "Đài Loan", period: "Hằng ngày" },
+      { code: "DE", name: "Đức", period: "Hằng ngày" },
+      { code: "JP", name: "Nhật", period: "Hằng ngày" },
+      { code: "AE", name: "Dubai", period: "Hằng giờ" },
+      { code: "ID", name: "Indo", period: "Hằng ngày" },
+      { code: "RO", name: "Romani", period: "Hằng ngày" },
+      { code: "ES", name: "Tây Ban Nha", period: "Hằng ngày" },
+      { code: "TH", name: "Thái", period: "Hằng ngày" },
+      { code: "TR", name: "Thổ", period: "Hằng giờ" },
+      { code: "IT", name: "Itali", period: "Hằng ngày" },
+      { code: "FR", name: "Pháp", period: "Hằng ngày" },
+      { code: "MY", name: "Malaysia", period: "Hằng ngày" },
+      { code: "AU", name: "Úc", period: "Hằng ngày" },
+      { code: "PH", name: "Philippin", period: "Hằng ngày" },
+      { code: "KZ", name: "Kazakhstan", period: "Hằng ngày" },
+      { code: "US", name: "Mỹ", period: null }
+    ];
+
+    const selectedCountries = ["GB", "TW", "DE", "JP", "AE", "ID", "RO", "ES", "TH", "TR", "IT", "FR", "MY", "AU", "US", "PH", "UA", "CH", "BE"];
+    const gameCountries = ["MY", "PH", "AZ", "ID", "IQ", "IT", "KZ"];
+
+    function countryCodeToEmoji(code) {
+      return code.toUpperCase().replace(/./g, char =>
+        String.fromCodePoint(127397 + char.charCodeAt())
+      );
+    }
+
+    const tbody = document.getElementById("country-table-body");
+    countries.forEach(({ code, name, period }) => {
+      const tr = document.createElement("tr");
+      const flagEmoji = countryCodeToEmoji(code);
+      const selected = selectedCountries.includes(code) ? "✅" : "";
+      const playGame = gameCountries.includes(code) ? "✅" : "";
+      const nameDisplay = period ? `${name} (${period})` : name;
+      tr.innerHTML = `
+        <td class="flag"><span>${flagEmoji}</span>${nameDisplay}</td>
+        <td>${selected}</td>
+        <td></td>
+        <td>${playGame}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>
